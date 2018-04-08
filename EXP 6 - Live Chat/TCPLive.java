@@ -9,7 +9,7 @@ class TCPLive implements Runnable
 		Socket[] s;
 		OutputStream[] out;
 		InputStream[] in;
-		BufferedReader br;
+		//BufferedReader br;
 		BufferedReader[] br2;
 		PrintWriter[] pw;
 		String str2 = " ";
@@ -28,8 +28,8 @@ class TCPLive implements Runnable
 				br=new BufferedReader(new InputStreamReader(System.in));
 				br2=new BufferedReader[20];
 				pw=new PrintWriter[20];
-				
-				
+
+
 				n=0;
 
 				while(true)
@@ -44,7 +44,7 @@ class TCPLive implements Runnable
 						n++;
 						System.out.println("New Client added");
 						System.out.println("No of clients " +n);
-						
+
 				}
 
 			}
@@ -62,23 +62,23 @@ class TCPLive implements Runnable
 				{
 					int k;
 
-				
+
 					for(k=0;k<n;k++)
 					{
 						if (Thread.currentThread()==t[k])
 						{
-						
+
 							str2=br2[k].readLine();
 							for (i=0; i<n; i++)
 							{
 								if (i!=k)
 									pw[i].println("Client"+k+" says "+str2);
-							
+
 							}
-						
+
 							if (str2.equals("exit"))
 								System.exit(0);
-						
+
 						}
 					}
 				}
@@ -88,17 +88,15 @@ class TCPLive implements Runnable
 			{
 			}
 
-		
+
 		}
 
 }
 
 class TCPLive1
 {
-	public static void main(String args[])		
+	public static void main(String args[])
 	{
 		TCPLive s=new TCPLive();
 	}
-}		
-		
-
+}
